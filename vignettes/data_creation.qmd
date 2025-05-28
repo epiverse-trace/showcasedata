@@ -1,0 +1,19 @@
+---
+title: "data_creation_process"
+format: html
+---
+
+### create simulated data
+
+```{r}
+# simulated data creation
+set.seed(123)
+local_data <- simulist::sim_linelist() |>
+  simulist::messy_linelist(inconsistent_dates = TRUE)
+head(local_data)
+saveRDS(
+  local_data,
+  file = file.path(dirname(getwd()), "inst", "extdata", "messy_data.RDS")
+)
+```
+
